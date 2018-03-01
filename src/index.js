@@ -13,9 +13,9 @@ module.exports = function getZerosCount( number, base ) {
       number = number / prime;
       count++;
     }
-    return Object.assign( {}, counter, {
+    return { ...counter,
       [ prime ]: count
-    } );
+    };
   }, {} );
   // find the rarest one and count it
   const [ rarestPrime, rarestCount ] = Object.entries( primeCount ).reduce( ( min, prime ) => min[ 1 ] > prime[ 1 ] ? prime : min );
@@ -52,9 +52,9 @@ function findPrimes( number ) {
 }
 
 function baseCounter( number, primesArr ) {
-  const primeCount = primesArr.reduce( ( o, prime ) => o[ prime ] ? o : Object.assign( {}, o, {
-      [ prime ]: 0
-  } ) );
+  const primeCount = primesArr.reduce( ( o, prime ) => o[ prime ] ? o : { ...o,
+    [ prime ]: 0
+  }, {} );
 
   for ( let i = 1; i < number; ++i ) {
     primesArr.forEach( j => {
