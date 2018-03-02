@@ -2,7 +2,7 @@ module.exports = function getZerosCount( number, base ) {
   let count = 0,
     primesArr = [];
 
-  // find prime divisors
+
   primesArr = findPrimes( base );
   const baseCount = primesArr.reduce( ( counter, prime ) => {
     let number = base;
@@ -17,7 +17,7 @@ module.exports = function getZerosCount( number, base ) {
   }, {} );
   const primeCount = baseCounter( number, primesArr, baseCount );
 
-  // find the rarest one and count it
+
   const [ rarestPrime, rarestCount ] = Object.entries( primeCount ).reduce( ( min, prime ) => min[ 1 ] > prime[ 1 ] ? prime : min );
 
 
